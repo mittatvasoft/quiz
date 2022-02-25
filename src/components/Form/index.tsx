@@ -27,8 +27,9 @@ const Form: React.FC<FormProps> = ({ onData }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (!nameInput.trim()) return
     const payload: User = {
-      name: nameInput,
+      name: nameInput.trim(),
       genderId: genderInput,
       languageId: languageInput
     }
