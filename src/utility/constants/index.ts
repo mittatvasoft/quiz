@@ -2,7 +2,7 @@ import { ValueMap } from 'utility/interfaces'
 
 export const languages: Array<ValueMap> = [
   { title: 'English', value: 1 },
-  { title: 'Hindi', value: 2 }
+  { title: 'French', value: 2 }
 ]
 
 export const genders: Array<ValueMap> = [
