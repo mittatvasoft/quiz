@@ -1,0 +1,44 @@
+html,
+body {
+  margin: 0 10px;
+  padding: 0;
+  font-family: 'Nunito', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.chart-container {
+  height: 300px !important;
+}
+
+@media (max-width: 480px) {
+  .chart-container {
+    width: 350px !important;
+    height: 180px !important;
+  }
+  .chart-container svg {
+    width: 280px !important;
+    height: 180px !important;
+  }
+  .recharts-wrapper {
+    width: auto !important;
+    height: 180px !important;
+    text-align: center !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .chart-container {
+    width: 450px !important;
+    height: 280px !important;
+  }
+  .chart-container svg {
+    width: 480px !important;
+    height: 280px !important;
+  }
+  .recharts-wrapper {
+    width: auto !important;
+    height: 280px !important;
+    text-align: center !important;
+  }
+}
