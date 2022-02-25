@@ -186,7 +186,8 @@ export const questions: Array<Question> = [
           { languageId: 1, title: 'Hooks can only be called at the top level of a component' },
           {
             languageId: 2,
-            title: "React Hooks crochets ne peuvent être appelés qu'au niveau supérieur d'un composant"
+            title:
+              "React Hooks crochets ne peuvent être appelés qu'au niveau supérieur d'un composant"
           }
         ]
       },
@@ -201,14 +202,20 @@ export const questions: Array<Question> = [
         id: 3,
         languageInfo: [
           { languageId: 1, title: 'Hooks can only be called inside React Function components' },
-          { languageId: 2, title: 'React Hooks ne peut être appelé qu'à l'intérieur des composants React Function' }
+          {
+            languageId: 2,
+            title: "React Hooks ne peut être appelé qu'à l'intérieur des composants React Function"
+          }
         ]
       },
       {
         id: 4,
         languageInfo: [
           { languageId: 1, title: 'Hooks can be called in Class or Function components ' },
-          { languageId: 2, title: 'React Hooks peut être appelé dans les composants Class ou Function ' }
+          {
+            languageId: 2,
+            title: 'React Hooks peut être appelé dans les composants Class ou Function '
+          }
         ]
       }
     ]
