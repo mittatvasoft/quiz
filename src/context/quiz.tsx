@@ -88,7 +88,7 @@ export const useQuiz = () => {
     let totalCorrect = 0
     let totalUnAnswered = 0
     const questionAnswers: Array<ReportSingleQA> = []
-    const userLanguageId = context.state.user?.languageId || 0
+    const userLanguageId = context.state.user?.languageId || 1
     context.state.questions.forEach((q) => {
       const foundUserInput = context.state.userInputs.find((ui) => ui.questionId === q.questionId)
       const questionInPreferredLanguage =
@@ -114,7 +114,7 @@ export const useQuiz = () => {
           ? q.optionsInfo
               .find((oi) => oi.id === foundUserInput?.answerId)
               ?.languageInfo?.find((li) => li.languageId === userLanguageId)?.title || 'Unanswered'
-          : (foundUserInput?.answerId as number[])
+          : ((foundUserInput?.answerId || []) as number[])
               .map((i) => {
                 const yourAnswer =
                   q.optionsInfo
