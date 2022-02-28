@@ -5,11 +5,12 @@ import QuizProvider from 'context/quiz'
 import { Flow } from 'utility/enums'
 import QuizPage from './Quiz'
 import ReportPage from './Report'
+import { questions } from 'data'
 
 const Home: React.FC = () => {
   const [currentElement, setCurrentElement] = useState(Flow.Form)
   return (
-    <QuizProvider>
+    <QuizProvider questions={questions}>
       <Grid container justifyContent="center" marginTop={10}>
         {currentElement === Flow.Form && <Form onData={() => setCurrentElement(Flow.Quiz)} />}
         {currentElement === Flow.Quiz && (

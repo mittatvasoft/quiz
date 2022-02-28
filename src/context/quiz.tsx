@@ -1,8 +1,8 @@
-import { questions } from 'data'
 import React, { useContext, useReducer } from 'react'
 import { createContext } from 'react'
 import { AnswerType, QuestionType } from 'utility/enums'
 import {
+  Question,
   QuizContextState,
   QuizState,
   ReportSingleQA,
@@ -11,13 +11,12 @@ import {
 } from 'utility/interfaces'
 import { QuizActions, QuizActionType } from './actions/quiz'
 
-const defaultQuizState: QuizState = {
-  questions,
-  userInputs: []
+interface QuizProviderProps {
+  questions: Question[]
 }
 
 const quizContextState: QuizContextState = {
-  state: defaultQuizState,
+  state: { questions: [], userInputs: [] },
   dispatch: () => undefined
 }
 
@@ -45,7 +44,11 @@ const quizReducer = (state: QuizState, action: QuizActions): QuizState => {
 
 const QuizContext = createContext(quizContextState)
 
-const QuizProvider: React.FC = ({ children }) => {
+const QuizProvider: React.FC<QuizProviderProps> = ({ children, questions }) => {
+  const defaultQuizState: QuizState = {
+    questions,
+    userInputs: []
+  }
   const [state, dispatch] = useReducer(quizReducer, defaultQuizState)
   return <QuizContext.Provider value={{ state, dispatch }}>{children}</QuizContext.Provider>
 }
@@ -80,9 +83,8 @@ export const useQuiz = () => {
     return compressedQuestion
   }
 
-  const getSavedAnswer = (questionId: number) => {
-    return context.state.userInputs.find((ui) => ui.questionId === questionId)?.answerId || ''
-  }
+  const getSavedAnswer = (questionId: number) =>
+    context.state.userInputs.find((ui) => ui.questionId === questionId)?.answerId || ''
 
   const generateReport = (): ReportState => {
     let totalCorrect = 0

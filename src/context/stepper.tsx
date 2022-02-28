@@ -5,7 +5,6 @@ import { useQuiz } from './quiz'
 
 interface StepperContext {
   step: number
-  setStep: (s: number) => void
   handleNext: VoidFunction
   goToStep: (value: number) => void
   handleBack: VoidFunction
@@ -50,7 +49,6 @@ const CustomStepper: React.FC<StepperProps> = ({ children, onFinish }) => {
     <StepperContext.Provider
       value={{
         step,
-        setStep,
         handleNext,
         goToStep,
         handleBack,
