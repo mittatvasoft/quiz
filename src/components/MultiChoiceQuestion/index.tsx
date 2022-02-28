@@ -27,9 +27,10 @@ const MultiChoiceQuestion: React.FC<MultiChoiceQuestionProps> = ({ data }) => {
   const handleChange = (answerId: number) => {
     if (value.includes(answerId)) {
       const filtered = value.filter((v) => v !== answerId)
+      filtered.sort()
       setValue(filtered)
     } else {
-      setValue((prev) => [...prev, answerId])
+      setValue((prev) => [...prev, answerId].sort())
     }
   }
 
