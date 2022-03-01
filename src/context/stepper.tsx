@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { Step, StepButton, Stepper } from '@mui/material'
 import React, { useContext, createContext, useState } from 'react'
 import { useQuiz } from './quiz'
 
@@ -56,13 +54,23 @@ const CustomStepper: React.FC<StepperProps> = ({ children, onFinish }) => {
       }}
     >
       {state.questions.length > 0 && (
-        <Stepper nonLinear activeStep={step}>
-          {state.questions.map((q, i) => (
-            <Step key={q.questionId} completed={isCompleted(q.questionId)}>
-              <StepButton onClick={() => i !== step && setStep(i)} />
-            </Step>
-          ))}
-        </Stepper>
+        <div className="stepper-container">
+          {state.questions.map((q, i) => {
+            const isStepDone = isCompleted(q.questionId)
+            return (
+              <div
+                key={q.questionId}
+                className={`stepper-item ${isStepDone ? 'completed' : ''} ${
+                  step === i ? 'active' : ''
+                }`}
+              >
+                <button className="step-counter" onClick={() => i !== step && setStep(i)}>
+                  {isStepDone ? '✔' : i + 1}
+                </button>
+              </div>
+            )
+          })}
+        </div>
       )}
       {currentChild}
     </StepperContext.Provider>
